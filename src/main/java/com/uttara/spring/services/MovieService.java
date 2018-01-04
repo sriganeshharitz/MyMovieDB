@@ -1,0 +1,21 @@
+package com.uttara.spring.services;
+
+import com.uttara.spring.beans.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+public interface MovieService {
+    UserBeanAndMessage createList(UserBean userBean, String name);
+    MovieResults searchMovie(String searchName);
+
+    String addMovieToList(Movie movie, String name);
+
+    List<WatchList> getWatchListsForUser(UserBean userBean);
+
+    List<Movie> getMoviesOfList(Long listId);
+    boolean doesListAlreadyExistForUser(String listName,UserBean userBean);
+    WatchList getList(String listName,Long userId);
+
+    WatchList addComment(CommentBean commentBean);
+}
