@@ -13,8 +13,15 @@
     <title>Title</title>
     <%@include file="BootStrapCDN.jsp"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style type="text/css">
+        .myHidden {
+            display: none;
+        }
+    </style>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript"
+            src="https://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
 </head>
 <body>
     <%@include file="Header.jsp"%>
@@ -40,24 +47,25 @@
         <%--</c:if>--%>
         <div class="row">
             <c:forEach items="${movieResults.results}" var="result">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="card" style="width: 20rem;">
-                        <img class="card-img-top img-fluid height-auto" src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="Card image cap">
+                        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">${result.title}</h4>
                             <p>${result.release_date}</p>
-                            <p class="card-text">${result.overview}</p>
+                            <p class="card-text overview">${result.overview}</p>
                             <form action="addMovieToList" method="post">
-                                <input type="text" name="title" value="${result.title}" hidden><br>
-                                <input type="text" name="overview" hidden value="${result.overview}"><br>
-                                <input type="text" name="id" hidden value="${result.id}"><br>
-                                <input type="text" name="poster_path" hidden value="${result.poster_path}"><br>
-                                <input type="text" name="release_date" hidden value="${result.release_date}"><br>
-                                <input type="text" name="watchList.name" value="${listName}" hidden>
+                                <div class="myHidden">
+                                    <input type="text" name="title" value="${result.title}" ><br>
+                                    <input type="text" name="overview"  value="${result.overview}"><br>
+                                    <input type="text" name="id"  value="${result.id}"><br>
+                                    <input type="text" name="poster_path" value="${result.poster_path}"><br>
+                                    <input type="text" name="release_date"  value="${result.release_date}"><br>
+                                    <input type="text" name="watchList.name"  value="${listName}">
+                                </div>
                                 <div class="form-group">
                                     <label for="user_review">Your review:</label>
                                     <textarea rows="4" cols="50" name="user_review" id="user_review" class="form-control">
-
                                     </textarea>
                                 </div>
 
@@ -98,6 +106,13 @@
                 );
             }
         );
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(".overview").shorten();
+
+        });
     </script>
 </body>
 </html>

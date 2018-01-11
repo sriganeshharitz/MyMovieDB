@@ -11,14 +11,33 @@
 <head>
     <title>Title</title>
     <%@include file="BootStrapCDN.jsp"%>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 </head>
 <body>
     <%@include file="Header.jsp"%>
-    <h2>Found ${watchListsForUser.size()} lists</h2>
-    <ul>
-        <c:forEach items="${watchListsForUser}" var="watchList">
-            <li><a href="viewMoviesOfList?listName=${watchList.name}&listId=${watchList.id}">${watchList.name}</a></li>
-        </c:forEach>
-    </ul>
+    <div class="container">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading text-center">Hurrayy!!</h4>
+            <p class="text-center">${msg}</p>
+            <hr>
+            <p class="text-center">Found ${watchListsForUser.size()} lists</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="list-group">
+                    <div class="row">
+                        <c:forEach items="${watchListsForUser}" var="watchList">
+                            <div class="col-md-8">
+                                <a href="viewMoviesOfList?listName=${watchList.name}&listId=${watchList.id}" class="list-group-item list-group-item-action">${watchList.name}</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="deleteList?id=${watchList.id}"  class="list-group-item list-group-item-action"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

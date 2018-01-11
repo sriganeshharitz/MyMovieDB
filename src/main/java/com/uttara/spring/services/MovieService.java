@@ -18,4 +18,6 @@ public interface MovieService {
     WatchList getList(String listName,Long userId);
 
     WatchList addComment(CommentBean commentBean);
+
+    String deleteList(Long id);
 }

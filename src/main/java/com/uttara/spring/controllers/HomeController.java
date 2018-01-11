@@ -106,6 +106,7 @@ public class HomeController {
         }
         else {
             model.addAttribute("msg","Logged out Successfully");
+            session.setAttribute("user",null);
             session.invalidate();
             return "index";
         }
@@ -334,6 +335,28 @@ public class HomeController {
                 else {
                     return "MoviesOfList";
                 }
+            }
+        }
+    }
+    @RequestMapping("deleteList")
+    public String deleteList(@RequestParam("id") Long id,HttpServletRequest request,Model model) {
+        HttpSession session = request.getSession(false);
+        if(session==null||session.getAttribute("user")==null) {
+            model.addAttribute("msg","Session expired or haven't logged in");
+            return "Error";
+        }
+        else {
+            String msg = movieService.deleteList(id);
+            if(msg.equals(Constant.SUCCESS)) {
+                UserBean userBean = (UserBean) session.getAttribute("user");
+                List<WatchList> watchListsForUser= movieService.getWatchListsForUser(userBean);
+                model.addAttribute("watchListsForUser",watchListsForUser);
+                model.addAttribute("msg","Deletion Successful");
+                return "CreatedLists";
+            }
+            else {
+                model.addAttribute("msg",msg);
+                return "Error";
             }
         }
     }

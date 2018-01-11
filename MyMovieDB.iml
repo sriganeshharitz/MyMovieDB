@@ -84,5 +84,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="jquery.shorten.1.0" level="application" />
   </component>
 </module>

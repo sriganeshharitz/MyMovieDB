@@ -23,7 +23,7 @@
                         </label>
                         <input type="text" name="watchListName" class="form-control" id="watchListName">
                         <p class="text-danger">${msg}</p>
-                        <input type="submit" value="Create" class="btn btn-success">
+                        <input type="submit" value="Create" class="btn btn-success btn-block">
                     </div>
                 </form>
             </div>

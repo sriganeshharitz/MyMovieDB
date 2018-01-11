@@ -23,7 +23,6 @@
                     <a href="showLogin" class="btn btn-success btn-block">Login</a>
                 </div>
             </div>
-
         </div>
 
     </div>

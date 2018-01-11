@@ -5,6 +5,7 @@ import com.uttara.spring.beans.UserBean;
 import com.uttara.spring.beans.UserBeanAndMessage;
 import com.uttara.spring.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service

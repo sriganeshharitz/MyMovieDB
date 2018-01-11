@@ -86,4 +86,13 @@ public class MovieServiceImpl implements MovieService {
             return movieDAO.addComment(commentBean);
         }
     }
+
+    public String deleteList(Long id) {
+        if(id==null) {
+            return "Invalid input";
+        }
+        else {
+            return movieDAO.deleteList(id);
+        }
+    }
 }

@@ -24,15 +24,35 @@
                         <div class="card-body">
                             <h4 class="card-title">${movie.title}</h4>
                             <p>${movie.release_date}</p>
-                            <p>My Review: ${movie.user_review}</p>
+                            <p> Review: ${movie.user_review}</p>
                                 <%--<p class="card-text">${.overview}</p>--%>
                         </div>
                     </div>
                 </div>
             </c:forEach>
         </div>
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
+        <div class="row mb-3">
+            <div class="col-md-8 offset-md-2">
+                <h4 class="display-4">Comments:</h4>
+            </div>
+            <c:forEach items="${watchList.comments}" var="comment">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card">
+                        <div class="card-header">
+                                ${comment.guest}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">${comment.comment}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                                ${comment.date}
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8 offset-md-2">
                 <div class="card">
                     <h5 class="card-header">
                         Add your comment
@@ -58,23 +78,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <c:forEach items="${watchList.comments}" var="comment">
-                <div class="col-md-6 offset-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            ${comment.guest}
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">${comment.comment}</p>
-                            <div class="card-footer text-muted">
-                                ${comment.date}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
+
 
     </div>
 </body>

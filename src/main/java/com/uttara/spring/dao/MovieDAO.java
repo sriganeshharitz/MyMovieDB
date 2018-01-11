@@ -19,4 +19,6 @@ public interface MovieDAO {
     WatchList getList(String listName, Long userId);
 
     WatchList addComment(CommentBean commentBean);
+
+    String deleteList(Long id);
 }

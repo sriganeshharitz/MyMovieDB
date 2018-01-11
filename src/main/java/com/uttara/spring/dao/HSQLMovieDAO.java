@@ -268,4 +268,44 @@ public class HSQLMovieDAO implements MovieDAO {
             }
         }
     }
+
+    public String deleteList(Long id) {
+        if(id==null) {
+            return "Invalid input";
+        }
+        else {
+            Session session = null;
+            Transaction transaction = null;
+            try {
+                System.out.println("Inside hsqlDAO");
+                session = sessionFactory.openSession();
+                transaction = session.beginTransaction();
+                Query query = session.createQuery("delete from WatchList where id = "+id);
+                int count = query.executeUpdate();
+                transaction.commit();
+                if(count!=0) {
+                    return Constant.SUCCESS;
+                }
+                else {
+                    return "List doesn't exist";
+                }
+            }
+            catch (NoResultException e) {
+                return null;
+            }
+            catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+                e.printStackTrace();
+                e.getMessage();
+                return "oops something happened contact admin";
+            }
+            finally {
+                if(session!=null) {
+                    session.close();
+                }
+            }
+        }
+    }
 }
